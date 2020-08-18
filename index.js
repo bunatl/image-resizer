@@ -53,4 +53,4 @@ function imageResizer (parameters) {
 
 // imageResizer({ width: 400 });
 
-module.exports.resizeImage = imageResizer;
+export const resizeImage = imageResizer;
