@@ -1,6 +1,13 @@
-function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0.92, selectorClass = "") {
+function imageResizer (parameters) {
+    let width = parameters.width;
+    let height = parameters.height === undefined ? 0 : parameters.height;
+    let outputType = parameters.outputType === undefined ? "png" : parameters.outputType;
+    let encoderQuality = parameters.encoderQuality === undefined ? 0.92 : parameters.encoderQuality;
+    let selectorClass = parameters.selectorClass === undefined ? "" : parameters.selectorClass;
+
+
     // width is mandatory parameter
-    if (!width) return;
+    if (!width || width === 0 || width === undefined) return;
 
     // get all images
     let images = document.getElementsByTagName("img");
@@ -43,5 +50,7 @@ function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0
         };
     }
 }
+
+// imageResizer({ width: 400 });
 
 module.exports.resizeImage = imageResizer;
