@@ -35,16 +35,13 @@ function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0
             a.target = "_blank";
             a.rel = "noreferrer";
 
+            // replace child as described: https://stackoverflow.com/questions/6938248/insert-a-div-element-as-parent
             // set a as the wrapper as child
             parent.replaceChild(a, image);
             // set image as child of a
             a.appendChild(image);
-
         };
-
     }
-
 }
 
-imageResizer(250);
-
+module.exports.resizeImage = imageResizer;
