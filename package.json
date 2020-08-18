@@ -1,5 +1,5 @@
 {
-  "name": "image-resizer",
+  "name": "all-images-resizer-tool",
   "version": "1.0.0",
   "description": "Npm package that allows user to resize his img",
   "main": "index.js",

@@ -7,15 +7,15 @@
 ## Installation
 ### npm
 #### Install
-`npm i image-resizer --save`
+`npm i all-images-resizer-tool --save`
 #### Usage
 ```
-import { resizeImage } from 'image-resizer';
+import { resizeImage } from 'all-images-resizer-tool';
 resizeImage({
     width: 400
 });
 ```
-### cdn
+<!-- ### cdn -->
 
 
 ## Parameteres
@@ -32,7 +32,7 @@ resizeImage({
 
 ## Links
 - *GitHub* [link](https://github.com/bunatl/image-resizer/issues)
-- *npm* [link]()
+- *npm* [link](https://www.npmjs.com/package/all-images-resizer-tool)
 
 ## To do
 - Find out a way to resize images before loading => save data transfer
