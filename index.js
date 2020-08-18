@@ -14,7 +14,7 @@ function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0
         // Prevent "Uncaught DOMException: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported." error
         img.crossOrigin = 'Anonymous';
 
-        img.onload = function (e) {
+        img.onload = e => {
             // https://www.w3schools.com/tags/ref_canvas.asp
             const c = document.createElement("canvas");
 
@@ -27,6 +27,19 @@ function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0
             // output cropped picture back to html
             // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
             image.src = c.toDataURL(`image/${ outputType }`, encoderQuality);
+
+            const parent = image.parentNode;
+
+            const a = document.createElement("a");
+            a.href = e.target.src;
+            a.target = "_blank";
+            a.rel = "noreferrer";
+
+            // set a as the wrapper as child
+            parent.replaceChild(a, image);
+            // set image as child of a
+            a.appendChild(image);
+
         };
 
     }

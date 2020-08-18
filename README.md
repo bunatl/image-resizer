@@ -1,2 +1,2 @@
-# image-resizer
-Npm package that allows user to resize his images
+# Image resizer
+Package that replace all images in `img` tag with the same image in desired width
