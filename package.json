@@ -1,0 +1,25 @@
+{
+  "name": "image-resizer",
+  "version": "1.0.0",
+  "description": "Npm package that allows user to resize his img",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bunatl/image-resizer.git"
+  },
+  "keywords": [
+    "Build-in",
+    "browser",
+    "resize",
+    "tool"
+  ],
+  "author": "Lukas Bunat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bunatl/image-resizer/issues"
+  },
+  "homepage": "https://github.com/bunatl/image-resizer#readme"
+}
