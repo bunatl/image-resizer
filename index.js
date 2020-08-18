@@ -1,37 +1,37 @@
-// selector, ratio
-function imageResizer (width, height, selectorClass) {
+function imageResizer (width, height = 0, outputType = "png", encoderQuality = 0.92, selectorClass = "") {
+    // width is mandatory parameter
     if (!width) return;
 
-    // https://www.w3schools.com/tags/ref_canvas.asp
+    // get all images
+    let images = document.getElementsByTagName("img");
 
-    const images = document.getElementsByTagName("img");
+    if (selectorClass !== undefined && selectorClass !== "")
+        images = images.getElementsByClassName(selectorClass);
 
     for (let image of images) {
-
-        const img = document.createElement('img');
+        let img = document.createElement('img');
         img.src = image.src;
-        console.log(img.src);
-        // img.crossOrigin = 'Anonymous';
+        // Prevent "Uncaught DOMException: Failed to execute 'toDataURL' on 'HTMLCanvasElement': Tainted canvases may not be exported." error
+        img.crossOrigin = 'Anonymous';
+
         img.onload = function (e) {
-
+            // https://www.w3schools.com/tags/ref_canvas.asp
             const c = document.createElement("canvas");
-            // const c = document.getElementById("canva");
+
+            // if user does not specified height - scale height based on new width ratio
+            const newHeight = (height === 0) ? (e.target.height * (width / e.target.width)) : height;
+
             const ctx = c.getContext("2d");
-            // c.width = 25;
-            // c.height = 25;
+            ctx.drawImage(e.target, 0, 0, width, newHeight);
 
-            ctx.drawImage(e.target, 0, 0, 100, 100);
-
-
-            const url = c.toDataURL(e.target, "image/png");
-            console.log(url);
-
-            document.getElementById("output").src = c.toDataURL(e.target, "image/png");
+            // output cropped picture back to html
+            // https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+            image.src = c.toDataURL(`image/${ outputType }`, encoderQuality);
         };
 
     }
 
 }
 
-imageResizer("400px");
+imageResizer(250);
 
